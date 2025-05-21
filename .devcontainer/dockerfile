@@ -1,0 +1,10 @@
+FROM mcr.microsoft.com/devcontainers/base:ubuntu
+
+ARG DEBIAN_FRONTEND="noninteractive"
+RUN apt-get update && apt-get -y install --no-install-recommends \
+    acme \
+    rhash
+
+# Clean apt cache and temporary files
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
